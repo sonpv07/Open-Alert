@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+    overflow: hidden;
+    background-color: deepskyblue;
+    font-family: 'Pacifico', cursive;
+}
+
+.box {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+}
+
+.box::before {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    content: '';
+    background-color: pink;
+    top: -30px;
+    left: 0;
+    clip-path: polygon(0 40%, 50% 0, 100% 40%, 100% 100%, 0 100%);
+}
+
+.box::after {
+    position: absolute;
+    width: 100px;
+    content: '';
+    height: 10px;
+    opacity: 0.4;
+    bottom: -80px;
+    background-color: black;
+    filter: blur(10px);
+}
+
+.content {
+    position: absolute;
+    background-color: white;
+    width: 80%;
+    left: 50%;
+    transform: translate(-50%, 10px);
+    bottom: -50px;
+    height: 80px;
+    transition: 0.5s;
+}
+
+.designBox {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    left: 0;
+    background-color: rgb(212, 131, 145);
+    bottom: -70px;
+    display: block;
+    clip-path: polygon(0 0, 50% 40%, 100% 0, 100% 100%, 0 100%);
+}
+
+.designBox::after {
+    position: absolute;
+    width: 100%;
+    height: 65%;
+    bottom: 0;
+    left: 0;
+    background-color: palevioletred;
+    content: '';
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+.box:hover .content {
+    transform: translate(-50%, -18px);
+}
+
+input:checked ~ .content {
+    width: 300px;
+    height: 380px;
+    left: 50%;
+    margin: 0;
+    bottom: 80px;
+}
+
+img {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 180px;
+    left: 50%;
+    transform: translate(-50%) ;
+    display: none;
+}
+
+.content .title {
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    display: none;
+}
+
+.content .des1, .content .des2 {
+    padding: 5px 10px;
+    display: none;
+}
+
+.content .signature {
+    width: 90%;
+    text-align: right;
+    font-size: 20px;
+    display: none;
+}
+
+.content label {
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+input {
+    position: absolute;
+    opacity: 0;
+}
+
+input:checked ~ .content img,
+input:checked ~ .content .title,
+input:checked ~ .content .des1,
+input:checked ~ .content .des2,
+input:checked ~ .content .signature,
+input:checked ~ .content label {
+    opacity: 0;
+    display: block;
+    animation: showContent 1s ease-in-out 0.5s forwards;
+}
+
+@keyframes showContent {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
